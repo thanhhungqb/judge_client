@@ -155,10 +155,10 @@ def main():
                 out = nut.sendData(packData(config, 'getResultToken', {'token': args.token}))
                 out = json.loads(out)
                 # print(out)
-                pprint.pprint(out)
                 if out.get('status', None) is not None:
                     print(out['status'])
                     time.sleep(10)
+                    pprint.pprint(out)                
                 try:
                     f = open('t.zip', 'wb')
                     f.write(base64.b64decode(out['dataout']['content']))
