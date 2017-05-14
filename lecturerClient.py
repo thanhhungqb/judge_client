@@ -38,8 +38,8 @@ def main():
     # subparsers.add_parser('getTask', help="get Task zip file").add_argument('name')
 
     foo_parser = subparsers.add_parser('updateTask', help="Add or update task")
-    foo_parser.add_argument('--taskconfig', dest="Task config", default="taskconfig.ini")
-    foo_parser.add_argument('--zipgrade', dest="Zip file of grade", default="grade.zip")
+    foo_parser.add_argument('--taskconfig', help="Task config", default="taskconfig.ini")
+    foo_parser.add_argument('--zipgrade', help="Zip file of grade", default="grade.zip")
 
     report_task = subparsers.add_parser('reportByTaskName', help="Get report by task name")
     report_task.add_argument('name')
@@ -154,7 +154,7 @@ def main():
             while not is_done:
                 out = nut.sendData(packData(config, 'getResultToken', {'token': args.token}))
                 out = json.loads(out)
-                # print(out)
+                print(out)
                 if out.get('status', None) is not None:
                     print(out['status'])
                     time.sleep(10)
