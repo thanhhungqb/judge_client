@@ -10,7 +10,6 @@ import requests
 import sys
 
 config = None
-host = 'http://www.cse.hcmut.edu.vn'
 
 
 def main():
@@ -79,7 +78,7 @@ def main():
     with NetworkUtils(config) as nut:
         try:
             ret = json.loads(nut.sendData({'username': config['username'], 'password': config['password']},
-                                          url=host + '/onlinejudge/ws/auth'))
+                                          url=config['host'] + '/onlinejudge/ws/auth'))
             print('ret', ret)
             r_code = ret['code']
             print('code', r_code)
@@ -223,7 +222,7 @@ class NetworkUtils:
     def sendData(self, load, url=None):
         print('load', load)
         if url is None:
-            url = host + '/onlinejudge/ws/lecturerws'
+            url = self.config['host'] + '/onlinejudge/ws/lecturerws'
         headers = {'content-type': 'application/json; charset=utf-8'}
 
         r = requests.post(url, data=json.dumps(load), headers=headers, verify=False)
