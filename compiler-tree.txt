@@ -1,0 +1,72 @@
+/opt
+|-- antlr
+|   |-- antlr-4.5.3-complete.jar
+|   |-- antlr-4.6-complete.jar
+|   `-- antlr-4.7.1-complete.jar
+|-- compiler
+|   |-- antlr
+|   |   |-- antlr-4.5
+|   |   |   `-- antlr-4.5-complete.jar
+|   |   `-- antlr-4.6
+|   |       `-- antlr-4.6-complete.jar
+|   |-- java
+|   |   |-- jdk8 -> /opt/jdk1.8.0_151
+|   |   `-- jdk9 -> /opt/jdk-9.0.1
+|   `-- scala -> /opt/scala
+|-- java
+|   |-- jdk8 -> /opt/jdk1.8.0_151
+|   `-- jdk9 -> /opt/jdk-9.0.1
+|-- jdk-9.0.1
+|   |-- bin
+|   |-- conf
+|   |-- include
+|   |-- jmods
+|   |-- lib
+|   `-- release
+|-- jdk1.8.0_151
+|   |-- bin
+|   |-- db
+|   |-- include
+|   |-- jre
+|   |   |-- bin
+|   |   |-- lib
+|   |   `-- plugin
+|   |-- lib
+|   |-- man
+|   |-- release
+|-- jdk8 -> /opt/jdk1.8.0_151
+|-- jdk9 -> /opt/jdk-9.0.1
+|-- scala
+    |-- scala-2.10.7
+    |   |-- bin
+    |   |-- doc
+    |   |-- examples
+    |   |-- lib
+    |   |-- man
+    |   |-- misc
+    |   `-- src
+    |-- scala-2.11.12
+    |   |-- bin
+    |   |-- doc
+    |   |-- lib
+    |   `-- man
+    |       `-- man1
+    |-- scala-2.11.8
+    |   |-- bin
+    |   |-- doc
+    |   |-- lib
+    |   `-- man
+    |-- scala-2.12.4
+    |   |-- bin
+    |   |-- doc
+    |   |-- lib
+    |   `-- man
+    `-- scala-2.9.1.final
+        |-- bin
+        |-- doc
+        |-- lib
+        |-- man
+        |-- meta
+        |-- misc
+        `-- src
+
