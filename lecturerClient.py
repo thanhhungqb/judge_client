@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/usr/bin/env python3
 
 import argparse
 import base64
@@ -145,7 +145,7 @@ def main():
 
         if args.subcommand == 'addPermit':  # add new or update permit; parameters: gname, tname, open, close
             out = nut.sendData(packData(config, 'addPermit',
-                                        {'gname': args[0], 'tname': args[1], 'gopen': args[2], 'gclose': args[3]}))
+                                        {'gname': args.gname, 'tname': args.tname, 'gopen': args.open, 'gclose': args.close}))
             print(out)
 
         if args.subcommand == 'getResultToken':
