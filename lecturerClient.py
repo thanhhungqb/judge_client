@@ -88,7 +88,7 @@ def main():
 
         except Exception as e:
             print(e)
-            sys.exit(0)
+            #sys.exit(0)
 
         # TASK
         if args.subcommand == 'getTasks':
@@ -176,7 +176,7 @@ def packData(config, action, params):
     :param params:
     :return:
     """
-    return {  # 'authenicate': {'username': config['username'], 'password': config['password']},
+    return {   'authenicate': {'username': config['username'], 'password': config['password']},
         'token': config['token'],
         'data': {'action': action, 'params': params}}
 
