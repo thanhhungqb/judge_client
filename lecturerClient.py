@@ -63,7 +63,9 @@ def main():
     permit_.add_argument('open')
     permit_.add_argument('close')
 
-    subparsers.add_parser('getResultToken', help="For long time task").add_argument('token')
+    get_token_ = subparsers.add_parser('getResultToken', help="For long time task")
+    get_token_.add_argument('token')
+    get_token_.add_argument('file', default="t.zip")
 
     args = parser.parse_args()
 
@@ -76,20 +78,6 @@ def main():
         print('err', str(e))
 
     with NetworkUtils(config) as nut:
-        #try:
-        #    ret = json.loads(nut.sendData({'username': config['username'], 'password': config['password']},
-        #                                  url=config['host'] + '/onlinejudge/ws/auth'))
-        #    print('ret', ret)
-        #    r_code = ret['code']
-        #    print('code', r_code)
-        #    if r_code != 0:
-        #        raise Exception('Fail when authenticate')
-        #    config['token'] = ret['token']
-        #except Exception as e:
-            # print(e)
-            #sys.exit(0)
-        #    pass
-
         # TASK
         if args.subcommand == 'getTasks':
             ret = json.loads(nut.sendData(packData(config, 'getTasks', {})))
@@ -116,6 +104,7 @@ def main():
             ret = json.loads(ret)
             args.subcommand = 'getResultToken'
             args.token = ret['token']
+            args.file = args.name
 
         # USER, GROUP
         if args.subcommand == 'getGroups':
@@ -153,13 +142,13 @@ def main():
             while not is_done:
                 out = nut.sendData(packData(config, 'getResultToken', {'token': args.token}))
                 out = json.loads(out)
-                print(out)
+                # print(out)
                 if out.get('status', None) is not None:
                     print(out['status'])
                     time.sleep(10)
                     pprint.pprint(out)                
                 try:
-                    f = open('t.zip', 'wb')
+                    f = open("{}.zip".format(args.file), 'wb')
                     f.write(base64.b64decode(out['dataout']['content']))
                     f.close()
                     print('done')
