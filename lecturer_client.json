@@ -1,5 +1,6 @@
 {
   "username": "USER",
   "password": "@3#",
-  "host": "http://www.cse.hcmut.edu.vn"
+  "host": "http://www.cse.hcmut.edu.vn",
+  "token": "TOKEN"
 }
