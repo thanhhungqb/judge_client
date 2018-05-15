@@ -76,19 +76,19 @@ def main():
         print('err', str(e))
 
     with NetworkUtils(config) as nut:
-        try:
-            ret = json.loads(nut.sendData({'username': config['username'], 'password': config['password']},
-                                          url=config['host'] + '/onlinejudge/ws/auth'))
-            print('ret', ret)
-            r_code = ret['code']
-            print('code', r_code)
-            if r_code != 0:
-                raise Exception('Fail when authenticate')
-            config['token'] = ret['token']
-
-        except Exception as e:
-            print(e)
+        #try:
+        #    ret = json.loads(nut.sendData({'username': config['username'], 'password': config['password']},
+        #                                  url=config['host'] + '/onlinejudge/ws/auth'))
+        #    print('ret', ret)
+        #    r_code = ret['code']
+        #    print('code', r_code)
+        #    if r_code != 0:
+        #        raise Exception('Fail when authenticate')
+        #    config['token'] = ret['token']
+        #except Exception as e:
+            # print(e)
             #sys.exit(0)
+        #    pass
 
         # TASK
         if args.subcommand == 'getTasks':
@@ -223,10 +223,11 @@ class NetworkUtils:
         print('load', load)
         if url is None:
             url = self.config['host'] + '/onlinejudge/ws/lecturerws'
+        print('url', url)    
         headers = {'content-type': 'application/json; charset=utf-8'}
 
         r = requests.post(url, data=json.dumps(load), headers=headers, verify=False)
-
+        # print(r.text)
         out = r.text.strip().replace('\n', ' ').replace('\n', ' \\n')
         return out
 
